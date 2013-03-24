@@ -1,4 +1,4 @@
-require "onewire/version"
+require 'onewire/version'
 
 module Onewire
   # Your code goes here...

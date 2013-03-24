@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Onewire::VERSION
   spec.authors       = ["Alexey Noskov"]
   spec.email         = ["alexey.noskov@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Simple client for owserver}
+  spec.summary       = %q{Simple client for owserver}
   spec.homepage      = ""
   spec.license       = "MIT"
 
