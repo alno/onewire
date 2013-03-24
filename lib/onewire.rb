@@ -1,5 +1,10 @@
 require 'onewire/version'
+require 'onewire/client'
 
 module Onewire
-  # Your code goes here...
+
+  def client(*args)
+    Client.new(*args)
+  end
+
 end
