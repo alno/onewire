@@ -37,6 +37,13 @@ And read values:
     client.read('/10.67C6697351FF/temperature')
     => 24.2887
 
+Or even write them:
+
+    client.write('/10.67C6697351FF/alias','somealias')
+    => nil
+    c.read('/10.67C6697351FF/alias')
+    => "somealias"
+
 ## Scopes
 
 To simplify some operations _scopes_ are available. Scopes provide client-like interface, but where all path arguments are relative to some node. For example:

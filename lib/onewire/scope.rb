@@ -3,7 +3,7 @@ require 'onewire/connection'
 module Onewire
   class Scope
 
-    DELEGATED_METHODS = %q{dir read scope}
+    DELEGATED_METHODS = %q{dir read write scope}
 
     def initialize(client, path)
       @client, @path = client, path

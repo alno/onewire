@@ -39,6 +39,13 @@ module Onewire
       end
     end
 
+    def write(path, value)
+      interact do |c|
+        c.write WRITE, "#{normalize path}\0#{value}\0", value.size
+        c.read
+      end
+    end
+
     def scope(path = '')
       Onewire::Scope.new self, path
     end
