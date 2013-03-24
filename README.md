@@ -1,6 +1,6 @@
 # Onewire
 
-TODO: Write a gem description
+It's simple Ruby client for OWFS [owserver](http://owfs.org/index.php?page=owserver_protocol)
 
 ## Installation
 
@@ -16,9 +16,34 @@ Or install it yourself as:
 
     $ gem install onewire
 
-## Usage
+## Basic usage
 
-TODO: Write usage instructions here
+Create client like:
+
+    require 'onewire'
+    client = Onewire.client
+
+You may specify optional host/port like this:
+
+    Onewire.client 'localhost', 4304
+
+Then, you may list OWFS directories:
+
+    client.dir('/')
+    => ["/10.67C6697351FF", "/05.4AEC29CDBAAB", "/bus.0", "/uncached", "/settings", "/system", "/statistics", "/structure", "/simultaneous", "/alarm"]
+
+And read values:
+
+    client.read('/10.67C6697351FF/temperature')
+    => 24.2887
+
+## Scopes
+
+To simplify some operations _scopes_ are available. Scopes provide client-like interface, but where all path arguments are relative to some node. For example:
+
+    scope = client.scope('/10.67C6697351FF')
+    scope.read('temperature')
+    => 24.2887
 
 ## Contributing
 
