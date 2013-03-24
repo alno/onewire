@@ -1,4 +1,5 @@
 require 'onewire/connection'
+require 'onewire/scope'
 
 module Onewire
   class Client
@@ -17,9 +18,9 @@ module Onewire
       @host, @port = host, port
     end
 
-    def dir(path)
+    def dir(path = '')
       interact do |c|
-        c.write DIR, "#{path}\0", 8192
+        c.write DIR, "#{normalize path}\0", 8192
 
         res = []
 
@@ -33,12 +34,20 @@ module Onewire
 
     def read(path)
       interact do |c|
-        c.write READ, "#{path}\0", 8192 # Default value size to read
+        c.write READ, "#{normalize path}\0", 8192 # Default value size to read
         typecast c.read
       end
     end
 
+    def scope(path = '')
+      Onewire::Scope.new self, path
+    end
+
     private
+
+    def normalize(path)
+      path.gsub(/\A(?!\/)|\/{2,}/,'/')
+    end
 
     def typecast(val)
       Float(val) rescue val
